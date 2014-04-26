@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://certificateservice.com/" xmlns:tns="http://certificateservice.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="NonexistentCertificateException" nillable="true" type="tns:nonexistentCertificateExceptionBean"/>
+
+  <xs:element name="NonexistentExamTypeException" nillable="true" type="tns:nonexistentExamTypeExceptionBean"/>
+
+  <xs:element name="getAllCertificates" nillable="true" type="tns:getAllCertificates"/>
+
+  <xs:element name="getAllCertificatesResponse" nillable="true" type="tns:getAllCertificatesResponse"/>
+
+  <xs:element name="getAllExamTypes" nillable="true" type="tns:getAllExamTypes"/>
+
+  <xs:element name="getAllExamTypesResponse" nillable="true" type="tns:getAllExamTypesResponse"/>
+
+  <xs:element name="getAllUpcomingExamsForCertificate" nillable="true" type="tns:getAllUpcomingExamsForCertificate"/>
+
+  <xs:element name="getAllUpcomingExamsForCertificateResponse" nillable="true" type="tns:getAllUpcomingExamsForCertificateResponse"/>
+
+  <xs:element name="getCertificate" nillable="true" type="tns:getCertificate"/>
+
+  <xs:element name="getCertificateResponse" nillable="true" type="tns:getCertificateResponse"/>
+
+  <xs:element name="getExamType" nillable="true" type="tns:getExamType"/>
+
+  <xs:element name="getExamTypeForCertificate" nillable="true" type="tns:getExamTypeForCertificate"/>
+
+  <xs:element name="getExamTypeForCertificateResponse" nillable="true" type="tns:getExamTypeForCertificateResponse"/>
+
+  <xs:element name="getExamTypeResponse" nillable="true" type="tns:getExamTypeResponse"/>
+
+  <xs:element name="getExamsForCertificate" nillable="true" type="tns:getExamsForCertificate"/>
+
+  <xs:element name="getExamsForCertificateResponse" nillable="true" type="tns:getExamsForCertificateResponse"/>
+
+  <xs:complexType name="getExamType">
+    <xs:sequence>
+      <xs:element name="examTypeCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getExamTypeResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:examType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="examType">
+    <xs:sequence>
+      <xs:element name="certificateCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="examTitle" type="xs:string" minOccurs="0"/>
+      <xs:element name="examTypeCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="nonexistentExamTypeExceptionBean">
+    <xs:sequence>
+      <xs:element name="examTypeCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getExamTypeForCertificate">
+    <xs:sequence>
+      <xs:element name="certificateCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getExamTypeForCertificateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:examType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllUpcomingExamsForCertificate">
+    <xs:sequence>
+      <xs:element name="certificateCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllUpcomingExamsForCertificateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:exam" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="exam">
+    <xs:sequence>
+      <xs:element name="examCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="examDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="examTypeCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getExamsForCertificate">
+    <xs:sequence>
+      <xs:element name="certificateCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getExamsForCertificateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:exam" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllExamTypes">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllExamTypesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:examType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCertificate">
+    <xs:sequence>
+      <xs:element name="certificateCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCertificateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:certificate" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="certificate">
+    <xs:sequence>
+      <xs:element name="certificateCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="certificateDescription" type="xs:string" minOccurs="0"/>
+      <xs:element name="certificateTitle" type="xs:string" minOccurs="0"/>
+      <xs:element name="companyCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="daysValid" type="xs:int"/>
+      <xs:element name="toolCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="nonexistentCertificateExceptionBean">
+    <xs:sequence>
+      <xs:element name="certificatCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllCertificates">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllCertificatesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:certificate" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+
