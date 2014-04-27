@@ -9,7 +9,7 @@ import javax.xml.ws.WebFault;
 @WebFault(  name = "NonexistentCertificateException",
             targetNamespace = "http://certificateservice.com/")
 public class NonexistentCertificateException extends Exception {
-    String certificateCode;
+    private String certificateCode;
 
     public NonexistentCertificateException(String certificateCode) {
         this.certificateCode = certificateCode;
